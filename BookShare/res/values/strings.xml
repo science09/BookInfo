@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BookShare</string>
+    <string name="action_add_lib">新建图书馆</string>
+    <string name="action_add_friend">添加新朋友</string>
+    <string name="title_section1">图书馆</string>
+    <string name="title_section2">好  友</string>
+    <string name="title_section3">Section 3</string>
+    
+	<string name="login_regemail_hint">请输入邮箱账号&#8230;</string>
+    <string name="login_password_hint">请输入密码&#8230;</string>
+    <string name="login_password_again_hint">请再次输入密码&#8230;</string>
+    <string name="lib">图书馆</string>
+    <string name="member">成员</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="register_txt1">还没有账号？</string>
+    <string name="register_txt2"> 立即注册 </string>
+    <string name="login_account">账号 </string>
+    <string name="login_pwd">密码 </string>
+    <string name="login_pwd_again">确认密码 </string>
+    <string name="network_tips">当前网络不可用,请检查您的网络!</string>
+    <string name="toast_error_password_null">密码不能为空</string>
+    <string name="toast_error_username_null">用户名不能为空</string>
+    <string name="toast_error_emailformat_error">邮箱格式不正确</string>
+    <string name="toast_error_comfirm_password">输入的两次密码不一致</string>
+</resources>
