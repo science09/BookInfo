@@ -9,6 +9,7 @@
     <string name="title_section3">Section 3</string>
     
 	<string name="login_regemail_hint">请输入邮箱账号&#8230;</string>
+	<string name="book_input_hint">请输入</string>
     <string name="login_password_hint">请输入密码&#8230;</string>
     <string name="login_password_again_hint">请再次输入密码&#8230;</string>
     <string name="lib">图书馆</string>
@@ -25,4 +26,15 @@
     <string name="toast_error_username_null">用户名不能为空</string>
     <string name="toast_error_emailformat_error">邮箱格式不正确</string>
     <string name="toast_error_comfirm_password">输入的两次密码不一致</string>
+    <string name="error_message_default">错误详情暂无</string>
+    <string name="error_message_net_exception">网络异常</string>
+    <string name="error_message_book_not_found">图书不存在</string>
+    <string name="add_book">添加(书)</string>
+    <string name="add_member">添加(人员))</string>
+    <string name="book_name">书名</string>
+    <string name="book_auther">作者</string>
+    <string name="book_desc">详细信息</string>
+    <string name="book_ISBN">ISBN</string>
+    <string name="book_save">保存</string>
+    <string name="book_search">扫一扫</string>
 </resources>

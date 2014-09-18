@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EFF3FF"
+        android:id="@+id/main_top" >
+        <ImageView 
+            android:id="@+id/lib_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dip"
+            android:layout_marginTop="5dip"
+            android:paddingBottom="5dip"
+            android:src="@drawable/headimg" />
+        <TextView android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/lib_image"
+            android:layout_marginLeft="8dip"
+            android:layout_marginTop="10dip"
+            android:text="宣言：技术是第一生产力"
+            android:textSize="20dp" />
+        
+    </RelativeLayout> 
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFDDDD" >
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginBottom="5dp"
+            android:background="@drawable/btn_login_selector"
+            android:gravity="center"
+            android:text="@string/add_book"
+            android:textColor="@color/base_color_text_white"
+            android:textSize="20dp" />
+    </LinearLayout>
+    
+    <RelativeLayout
+        android:id="@+id/layout_lib"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_top"
+        android:layout_above="@+id/bottom" >
+        <ListView
+        android:id="@+id/list_lib_book"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="#00000000" />
+    </RelativeLayout>
+	    
+</RelativeLayout>

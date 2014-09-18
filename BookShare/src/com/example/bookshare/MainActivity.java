@@ -12,6 +12,7 @@ import java.util.Set;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -203,22 +206,37 @@ public class MainActivity extends FragmentActivity implements
 //				}
 //			});
 			
-			Log.d(ARG_SECTION_NUMBER, "Fragment" + Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+			Log.d(ARG_SECTION_NUMBER, "Fragment" + Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));			
+			View rootView = inflater.inflate(R.layout.fragment_main_dummy,container, false);
+			/* 获取之前预加载的数据 */
+			SharedPreferences prefs = rootView.getContext().getSharedPreferences("libs", MODE_PRIVATE);
+			libNums = prefs.getInt("num", 0);
+			libs = new HashSet<String>();			
+			libs = prefs.getStringSet("libs", null);
 			
-				View rootView = inflater.inflate(R.layout.fragment_main_dummy,container, false);
-				/* 获取之前预加载的数据 */
-				SharedPreferences prefs = rootView.getContext().getSharedPreferences("libs", MODE_PRIVATE);
-				libNums = prefs.getInt("num", 0);
-				libs = new HashSet<String>();			
-				libs = prefs.getStringSet("libs", null);
-				
-				mlistView = (ListView) rootView.findViewById(R.id.list_view);
-				list = buildListForSimpleAdapter();
-				SimpleAdapter mAdapter = new SimpleAdapter(rootView.getContext(), list, R.layout.item_row,
-	        			new String[] {"book_img", "book_name", "book_desc"},
-	        			new int[] {R.id.book_img, R.id.book_name, R.id.book_desc});
-	        	mlistView.setAdapter(mAdapter);
-			
+			mlistView = (ListView) rootView.findViewById(R.id.list_view);
+			list = buildListForSimpleAdapter();
+			SimpleAdapter mAdapter = new SimpleAdapter(rootView.getContext(), list, R.layout.item_row,
+        			new String[] {"book_img", "book_name", "book_desc"},
+        			new int[] {R.id.book_img, R.id.book_name, R.id.book_desc});
+        	mlistView.setAdapter(mAdapter);
+	        mlistView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					// TODO Auto-generated method stub
+					
+					//Toast.makeText(getActivity(), "Item："+arg2+list.get(arg2).get("book_name"), Toast.LENGTH_SHORT).show();					
+					Intent intent = new Intent(getActivity(), LibInfoActivity.class);
+					//intent.putExtra("libname", list.get(arg2).get("book_name").toString());
+					Bundle bundle = new Bundle();
+					bundle.putString("libname", list.get(arg2).get("book_name").toString());
+					intent.putExtras(bundle);
+					startActivity(intent);
+				}
+			});
+	        
 			//dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 			return rootView;
 		}
@@ -228,7 +246,7 @@ public class MainActivity extends FragmentActivity implements
 		    
 		    for(Iterator<String> it = libs.iterator(); it.hasNext(); ){
 		    	Map<String, Object> map = new HashMap<String, Object>();
-		    	map.put("book_img", R.drawable.headimg);
+		    	map.put("book_img", R.drawable.favicon);
 		    	String str = it.next().toString();
 		    	int index =	str.indexOf("=#@$@#+");
 		    	Log.d("==MainAcitvity==", "index:" + index + str.substring(0, index));
@@ -258,15 +276,13 @@ public class MainActivity extends FragmentActivity implements
 			
 			Log.d(ARG_SECTION_NUMBER, "Fragment" + Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 			
-				View rootView = inflater.inflate(R.layout.fragment_main_dummy, container, false);
-				mlistView = (ListView) rootView.findViewById(R.id.list_view);
-				list = buildListForSimpleAdapter();
-				SimpleAdapter mAdapter = new SimpleAdapter(rootView.getContext(), list, R.layout.item_row_friend,
-	        			new String[] {"friend_img", "friend_name"},
-	        			new int[] {R.id.friend_img, R.id.friend_name});
-	        	mlistView.setAdapter(mAdapter);
-			
-			//dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+			View rootView = inflater.inflate(R.layout.fragment_main_dummy, container, false);
+			mlistView = (ListView) rootView.findViewById(R.id.list_view);
+			list = buildListForSimpleAdapter();
+			SimpleAdapter mAdapter = new SimpleAdapter(rootView.getContext(), list, R.layout.item_row_friend,
+        			new String[] {"friend_img", "friend_name"},
+        			new int[] {R.id.friend_img, R.id.friend_name});
+        	mlistView.setAdapter(mAdapter);
 			return rootView;
 		}
 		
@@ -274,7 +290,7 @@ public class MainActivity extends FragmentActivity implements
 		    List<Map<String, Object>> list = new  ArrayList<Map<String,Object>>(10);
 		    for(int i = 0; i < 10; i++){
 		    	Map<String, Object> map = new HashMap<String, Object>();
-		    	map.put("friend_img", R.drawable.headimg);
+		    	map.put("friend_img", R.drawable.huazai);
 				map.put("friend_name", "刘德华");
 					list.add(map);
 		    	}
